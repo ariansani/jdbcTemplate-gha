@@ -20,21 +20,34 @@ public class GameRepository {
     @Autowired
     private JdbcTemplate template;
 
-    public List<Comment> getCommentsByGid(Integer gid){
-        return getCommentsByGid(gid,10,0);
+    public Integer getNumComments(Integer gid) {
+
+        Integer numComments = 0;
+        final SqlRowSet rs = template.queryForRowSet(Queries.SQL_SELECT_COUNT_COMMENTS_BY_GID, gid);
+
+        while (rs.next()) {
+            numComments = rs.getInt("total");
+
+        }
+
+        return numComments;
     }
 
-    public List<Comment> getCommentsByGid(Integer gid, Integer limit){
+    public List<Comment> getCommentsByGid(Integer gid) {
+        return getCommentsByGid(gid, Integer.MAX_VALUE, 0);
+    }
+
+    public List<Comment> getCommentsByGid(Integer gid, Integer limit) {
         return getCommentsByGid(gid, limit, 0);
     }
 
-    public List<Comment> getCommentsByGid(Integer gid, Integer limit, Integer offset){
-       
-        final List<Comment> commentList = new LinkedList<>();
-        
-        final SqlRowSet rs = template.queryForRowSet(Queries.SQL_SELECT_COMMENTS_BY_GID, gid,limit,offset);
+    public List<Comment> getCommentsByGid(Integer gid, Integer limit, Integer offset) {
 
-        while(rs.next()){
+        final List<Comment> commentList = new LinkedList<>();
+
+        final SqlRowSet rs = template.queryForRowSet(Queries.SQL_SELECT_COMMENTS_BY_GID, gid, limit, offset);
+
+        while (rs.next()) {
             commentList.add(Comment.create(rs));
         }
 
@@ -48,9 +61,7 @@ public class GameRepository {
                 // select * from game where gid = <gid>
                 Queries.SQL_SELECT_GAME_BY_GID, queryGid);
 
-        
-
-        if(!rs.next()){
+        if (!rs.next()) {
             return Optional.empty();
         }
 

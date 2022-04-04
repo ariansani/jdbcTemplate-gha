@@ -55,11 +55,11 @@ public class Comment {
     public static Comment create(SqlRowSet rs) {
         Comment comment = new Comment();
 
-        comment.c_id=rs.getString("c_id");
-        comment.user=rs.getString("user");
-        comment.rating=rs.getInt("rating");
-        comment.c_text=rs.getString("c_text");
-        comment.gid=rs.getInt("gid");
+        comment.c_id = rs.getString("c_id");
+        comment.user = rs.getString("user");
+        comment.rating = rs.getInt("rating");
+        comment.c_text = rs.getString("c_text");
+        comment.gid = rs.getInt("gid");
 
         return comment;
     }
