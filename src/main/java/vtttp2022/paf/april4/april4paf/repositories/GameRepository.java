@@ -20,6 +20,14 @@ public class GameRepository {
     @Autowired
     private JdbcTemplate template;
 
+    public List<Comment> getCommentsByGid(Integer gid){
+        return getCommentsByGid(gid,10,0);
+    }
+
+    public List<Comment> getCommentsByGid(Integer gid, Integer limit){
+        return getCommentsByGid(gid, limit, 0);
+    }
+
     public List<Comment> getCommentsByGid(Integer gid, Integer limit, Integer offset){
        
         final List<Comment> commentList = new LinkedList<>();
