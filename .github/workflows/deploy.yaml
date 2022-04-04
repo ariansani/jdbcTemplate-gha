@@ -1,8 +1,8 @@
-name: My First Workflow
-on: ["push"]
+name: My first workflow
+on: [ "push" ]
 jobs:
-  my-first-workflow:
+  my-first-step:
     runs-on: ubuntu-latest
     steps:
-    -name: echo the date on Github
+    - name: echo the date on Github 
       run: echo "The current time/date on Github is $(date)"
