@@ -1,5 +1,7 @@
 package vtttp2022.paf.april4.april4paf.models;
 
+import java.util.List;
+
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import jakarta.json.Json;
@@ -14,6 +16,16 @@ public class Game {
     private Integer usersRated;
     private String url;
     private String image;
+    private List<Comment> comments;
+    
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public Integer getGid() {
         return gid;
