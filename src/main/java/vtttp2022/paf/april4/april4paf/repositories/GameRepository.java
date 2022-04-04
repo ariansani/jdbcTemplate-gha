@@ -64,7 +64,7 @@ public class GameRepository {
         if (!rs.next()) {
             return Optional.empty();
         }
-
+        
         return Optional.of(Game.create(rs));
 
     }

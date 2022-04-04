@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Game Details</h1>
+    <img data-th-src="${game.image}" width="300" height="300"></img>
+    <table border = 1>
+        <th>
+            <td>Game Id</td>
+            <td>Name</td>
+            <td>Year</td>
+            <td>Ranking</td>
+            <td>usersRated</td>
+            <td>URL</td>
+        </th>
+        <tr>
+            <td></td>
+            <td data-th-text="${game.gid}"></td>
+            <td data-th-text="${game.name}"></td>
+            <td data-th-text="${game.year}"></td>
+            <td data-th-text="${game.ranking}"></td>
+            <td data-th-text="${game.usersRated}"></td>
+            <td data-th-text="${game.url}"></td>
+        </tr>
+
+    </table>
+    <h1>Comments</h1>
+    <table border =1>
+        <tbody>
+            <th>User</th>
+            <th>Rating</th>
+            <th>Comment</th>
+            <tr data-th-each="c : ${commentsList}">
+                <td data-th-text="${c.user}"></td>
+                <td data-th-text="${c.rating}"></td>
+                <td data-th-text="${c.c_text}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+
+</body>
+</html>
